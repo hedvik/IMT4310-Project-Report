@@ -98,6 +98,7 @@
 \def\thesis@authorB{}
 \def\thesis@authorC{}
 \def\thesis@authorD{}
+\def\thesis@authorE{}
 \def\thesis@supervisor{}
 \def\thesis@supervisorA{}
 \def\thesis@oppdragsgiver{}
@@ -124,6 +125,7 @@
 \def\thesisauthorB#1{\def\thesis@authorB{#1}}
 \def\thesisauthorC#1{\def\thesis@authorC{#1}}
 \def\thesisauthorD#1{\def\thesis@authorD{#1}}
+\def\thesisauthorE#1{\def\thesis@authorE{#1}}
 \def\thesissupervisor#1{\def\thesis@supervisor{#1}}
 \def\thesissupervisorA#1{\def\thesis@supervisorA{#1}}
 \def\nmtoppdragsgiver#1{\def\thesis@oppdragsgiver{#1}}
@@ -405,7 +407,7 @@ Use $\backslash$useyear\{<year>\} to set year.
 		}
 	
 	\newcommand\nmt@DegreeNameText{}
-  \newcommand\nmt@BSP{Project Report for IMT4305}
+  \newcommand\nmt@BSP{IMT4310 - Experts in Teamwork}
   \newcommand\nmt@BPROG{Bachelor in Programming [Games|Applications]}
   \newcommand\nmt@BRD{Bachelor of Science in Network and System Administration}
   \newcommand\nmt@BIS{Bachelor in Information Security}
@@ -414,7 +416,7 @@ Use $\backslash$useyear\{<year>\} to set year.
   \newcommand\nmt@BADR{Bachelor in Information Technology\\with specialization in Network administration}
   \newcommand\nmt@BIT{Bachelor in Information Technology}
   \newcommand\nmt@BABED{IT-supported Business Architecture}
-  \newcommand\nmt@AuthorText{Author(s)}
+  \newcommand\nmt@AuthorText{Authors}
 	\newcommand\nmt@SupervisorText{Supervisor(s)}
 \newcommand\thesis@titlehead{\thesis@title}	
 
@@ -611,7 +613,8 @@ Use $\backslash$useyear\{<year>\} to set year.
           \thesis@authorA \\
           \thesis@authorB \\
           \thesis@authorC \\
- %         \thesis@authorD \\
+          \thesis@authorD \\
+          \thesis@authorE \\
           } 
           \par}
         \end{tabular}\par}
@@ -649,9 +652,11 @@ Use $\backslash$useyear\{<year>\} to set year.
 	Date: & \nmt@frontpagesyear\\
 		&\\
 	Authors: & \thesis@author\\
-		%& \thesis@authorA\\
-		%& \thesis@authorB\\
-		%& \thesis@authorC\\
+		& \thesis@authorA\\
+		& \thesis@authorB\\
+		& \thesis@authorC\\
+		& \thesis@authorD\\
+		& \thesis@authorE\\
 		&\\
 	Supervisor: & \thesis@supervisor\\
 		& \thesis@supervisorA\\
@@ -660,7 +665,7 @@ Use $\backslash$useyear\{<year>\} to set year.
 	Keywords: & \nmt@keywords\\
 	Pages: & \pageref{LastPage}\\
 	Attachments: & \nmt@appnumber\\
-	Availability: & Open\\ % this needs updating to use \nmt@pub}\\
+	Availability: & Open???\\ % this needs updating to use \nmt@pub}\\
 		&\\
 	\hline\\
 	Abstract: & \nmt@desc\\
