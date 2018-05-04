@@ -18,6 +18,7 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{pdfpages}
+\usepackage{enumerate}
 
 \newcommand{\comment}[1]{\textcolor{blue}{\emph{#1}}}  %% use of the colour and you can see how to use commands with parts \comment{so what}
 
@@ -60,14 +61,15 @@
 \input{inc/introduction}
 \input{inc/methods}
 \input{inc/results}
+\input{inc/Implementation.tex}
 \input{inc/discussion}
 \input{inc/conclusion}
+\input{inc/futureWork.tex}
 
 
 \bibliographystyle{ntnuthesis/ntnubachelorthesis}
-\bibliography{inc/BachelorExample}
+\bibliography{inc/ref}
 
-\appendix %after this line all chapters will have letters instead of numbers
-% spreadsheet data?
+\input{inc/appendix}
 
 \end{document}

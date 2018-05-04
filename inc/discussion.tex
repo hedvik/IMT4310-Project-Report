@@ -1,1 +1,52 @@
 \chapter{Discussion} \label{chap:discussion}
+\section{Changes between the initial game design and the final product prototype}
+The final prototype ended up retaining a lot of the core ideas from the initial design. The changes that were made are discussed in this Section. 
+
+Originally, it was intended to let the player use their dominant hand for conducting the time signature. This would be the case in a real-life situation, as conductors can freely choose to use whichever hand they desire. However, due to time constraints, we only allow for right-handed time signature conducting. This functionality had a low priority for implementation as our left-handed testers were able to play ''right-handed'' without any issues. 
+
+We also wanted to score the player on the accuracy of their conducting movements as well as their rhythmic precision. In the end, only rhythmic scoring was implemented. Our implementation for motion tracking lacks the sophistication needed to compare the player’s movement to a predefined motion. Instead, the player is now required to follow a simple pattern that corresponds to where their hand should be at certain beats to gain points.
+
+Volume control was not implemented in the final prototype due to time constraints, although this was a difficult decision to make. We realized that it would be challenging to find a suitable way to integrate this with the other mechanics.
+
+The Conductor Table/Dashboard was kept as originally designed, except for two changes. The volume bar was left on the table with logic for increasing/decreasing volume attached but ended up being unused as the volume control, in general, was dismissed during development. The other change relates to cueing, which was originally planned to be indicated on the table. The cues are now indicated by a floating sphere that the player has to hit at the right time. The rationale behind this change was a desire to avoid the player constantly looking down at the table for essential information, but rather supply it to the player as they look at the orchestra.
+
+We originally envisioned two game modes, a performance mode, and a freestyle mode. In the performance mode, the player is expected to follow a given pattern as close as possible. The freestyle mode would allow the players more artistic freedom by controlling both the volume and cueing at will. We decided to only implement the performance mode, based on the scope of the project, as the chosen mode would fit better with our envisioned implementation of the cueing system. The freestyle mode where the player could cue in instruments at will would also require a more robust fading system, and potentially another song that better fit with the removal and additions of the different instruments. 
+
+
+\section{Playtesting discussion}
+After finishing the integration of all the game components and having a working prototype we had a small and informal playtest with all group members. Some members of other groups were also invited. This Section describes what we learned from playtesting, what we changed due to feedback and what we would have liked to change given more time. 
+
+\subsection{What did we learn?}
+We learned that our choice of song was too fast and difficult for the average playtester. Our song of choice would probably end up at the higher end of the difficulty scale in a finished game. In hindsight, it could have been beneficial to have a simpler track for playtesting as it could have given us more information about the interactions within the game. Although most testers struggled with the fast rhythm, those with previous musical experience fared much better. After a few attempts players with musical experience generally performed at a high level in terms of score acquisition.
+
+Several testers mentioned that it was hard for them to visually understand the conducting pattern they were supposed to follow. The test build only indicated the pattern by having the four tracking spheres light up with a green colour per beat. Testers mentioned that they would like more visual feedback on their actions, reporting difficulty in understanding whether or not their actions were correct. 
+Some confusion was also connected to when the song started, which hints at the requirement for a clearer indication of this. Unintentionally the game starts tracking the score before the song has started.
+
+Another thing we noted from playtesting was player engagement throughout the gameplay. Testers were generally at their peak of engagement when needing to handle both cues and conducting at the same time as it really reinforces the rhythm of the song with both hands. When asked what parts of gameplay they enjoyed the most, the testers also confirmed this as they felt just conducting with one hand could become boring for longer tracks.  
+
+We discovered during playtesting that our world space placement of tracking spheres was too high for shorter testers. They struggled with hitting the tracking spheres in a natural and comfortable manner.
+
+Most testers also seemed a bit too focused on the tracking spheres, sometimes distracting them from noticing cues, or looking at the environment. We believe this is due to the testers being too worried about trying to hit the visual spheres. While in reality hitting this would not have been necessary for the gameplay as the game is quite forgiving in terms of hit detection. The rationale behind the hit detection being forgiving was to make it easier for players to look around the scene.
+
+\subsection{What did we change based on feedback?}
+One of the first changes we implemented after the initial playtesting was adding a trail going between the tracking spheres to visually demonstrate the conducting pattern to the player. The animation for the trail is tied to the beat of the music so it should also help the player stay in rhythm. We also added more visual feedback to scoring on both the table and the size/visibility of the red/green particles around tracking spheres, used for demonstrating whether the player is on or off beat. Whenever the player gains score a ''+1'' or ''+10'' will pop up in front of the score on the table. A ''+1'' is given for each beat the player manages to conduct correctly, while a ''+10'' is given when the player cues an instrument.
+
+When it comes to the player height and tracking sphere position disparity we added a simple means of calibrating the y position of the spheres. The player is able to change the height of the spheres before starting the song which should let them place them at a more comfortable height. 
+
+\subsection{What would we like to change based on feedback?}
+One thing in particular that we would have liked to change given more time is to make it more obvious when the song starts. While starting the countdown after calibration is fine for now, it would be nice to better indicate with the tracking spheres that a song has started, replacing the current system. The score should not be tracked during the countdown period, but showing beat countdowns towards the start of the song through additional means could potentially help the player realize when the song is supposed to start. 
+
+
+\section{Game design decisions}
+\subsection{The choice of method for tracking player conducting movement}
+Our solution to motion tracking is quite simple compared to proper gesture tracking, which could have been acquired from third-party libraries or assets. We went with this solution because it was the quickest and easiest way we could track motion for the prototype. We looked at other gesture tracking solutions, but none of these allowed the developer to see where in a gesture the player was, which is essential for checking where the player’s hand is in relation to the rhythm. 
+
+\subsection{Whether to place motion tracking components in world space or camera space}
+We discussed within the group whether to place the tracking spheres in world space or camera space. Initially, the spheres were in camera space and moved relative to where the player was looking. Having the spheres locked to camera space circumvented the issue of calibrating the player's height. However, it became a problem when cueing was added, as the players struggled to move their hands according to the spheres when looking for cues.
+To fix this we moved the spheres into the world space and added a simple calibration mechanism.
+
+\subsection{Critical Path Coding}
+Following a critical path coding~\cite{critical_path_coding} approach helped us focus on writing the minimum amount of code needed to solve our specific problems. We believe this approach enhanced the productivity of the programmers in the group and helped us avoid the trap of trying to create too many generalized or overly complicated solutions. However, we might have done a bit too many ''hacks'' to get the game to function, especially towards the end of the development cycle. While we might be able to reuse some parts of the code if we were to create a full game from this concept, others are too coupled with the current design or contain too much technical depth.
+
+\subsection{Dropping Process}
+As previously mentioned we originally planned to have a greater focus on documentation and work process, however, we abandoned this early in the project because we felt it added unnecessary overhead. None of us had ever programmed a rhythm game before and was therefore busy enough with exploring the problem space. Our inexperience also made planning and engineering solutions ahead of time more difficult. Because of these factors, it felt contrived and unnecessarily time-consuming to try and follow best practice guidelines. While this led to less documentation of our workflow and process we believe it was beneficial for our project, allowing us greater flexibility and the option to dedicate more time to implement the product.

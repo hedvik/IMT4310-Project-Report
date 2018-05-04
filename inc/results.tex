@@ -1,1 +1,46 @@
 \chapter{Results} \label{chap:results}
+
+\section{Game Design Document}
+We generated an initial design document for the game, giving a brief overview of the envisioned game, and a plan for the game mechanics. This document can be found in the Appendix \ref{chap:appendix}.
+
+\section{Game Implementation}
+After creating the game design document we implemented a functional prototype of the conductor hero game. The source code and binaries are located on github\footnote{\url{https://github.com/Per-Morten/imt4310_conductor_hero}}. In order to play the game, a functioning HTC Vive headset is required. Instructions on how to install and play the game can be found on the main GitHub repository page. A youtube video\footnote{\url{https://www.youtube.com/watch?v=YQQTDyfQb-Q}} was recorded to demonstrate the features of the game.
+
+\subsection{Asset Attribution}
+The majority of assets used in Conductor Hero were created by us with a few exceptions:
+\begin{itemize}
+\item Particle Fog textures were acquired from Unity’s Standard Assets.
+\item The skybox used in the game was acquired from the Unity Asset Store\footnote{\url{ https://assetstore.unity.com/packages/2d/textures-materials/sky/10-skyboxes-pack-day-night-32236}}   
+\item The models for the HTC Vive Controllers were provided with the SteamVR plugin. 
+\item The font used in the Conductor Table was acquired from dafont\footnote{\url{ https://www.dafont.com/white-rabbit.font}}. 
+\end{itemize}
+
+\subsection{Core Game Components}
+The four core components that make up the game are: ''GameManager'', ''Metronome'', ''AudioManager'', and ''MotionTracker''.
+
+The GameManager component manages musical cues as well as scoring. The Metronome component handles the core beat logic. It allows outside components to ask how close they are to being on beat. Other components can also add callbacks to the metronome which will be called every beat. The default sound for the metronome was removed, partly due to uncertainties regarding licensing. The AudioManager manages simultaneous playback of the multiple instrument tracks, metadata about song length and supports muting and unmuting individual tracks. 
+
+Finally, the MotionTracker component handles game logic related to the right hand conducting. This includes managing the visuals of the pattern and any logic for tracking the player’s movement within the pattern, using the tracking spheres in the scene.  
+
+\subsection{Standard game flow} 
+The following section describes the standard game flow in the prototype level of Conductor Hero:
+\begin{itemize}
+\item The player starts the game and the stage will go to an unlit state.  
+\item The two controllers are separated by having one with a laser pointer and one without. The “laser pointer” on one of the controllers indicates that it should be held in the left hand.
+\item In order to start the game, the player needs to hold their right controller in an upwards position where they would feel comfortable having the top of the conducting pattern and press the menu button to start. 
+The game starts a countdown to the song which ends with the first cue.
+\item While playing, the player’s left hand is used to hit cues on beat while their right hand is used to keep the conducting pattern going. 
+    \begin{itemize}
+    \item[--] A cue appears at designated times during the song. The cue has a circular progress bar which implies when the player is supposed to hit it.
+    \end{itemize}
+\item The game ends when the song is finished.
+\end{itemize}
+
+\subsection{Shortcomings with prototype}
+In the prototype, the game will start the countdown to the song and show the pattern to the player, but currently, it will also start counting score for movement even if the song has not properly started yet. This is unintended as we would like to start measuring score after the first cue, but we did not have the time to fix this by the end of the project. The game is also supposed to end once the song duration has expired, but we do not have any additional end states to signify this due to time constraints.  
+
+\subsection{Playtesting}
+As part of the development, we performed a lot of internal testing within the development team. We also had an initial playtesting session with the entire group and also asked some members of other teams to try out the game and give feedback. This playtesting session is further discussed in the Discussion Chapter.
+
+\section{Presentation}
+As part of the course, we also had a presentation towards the end where we showed off the project to the class, the supervisor and industry externals. The slides from the presentation can be found on Google Slides~\footnote{\url{https://docs.google.com/presentation/d/1unr5goORWJpajkHhiNFVHJUfyByFeLB_AzXME653Kd0/edit?usp=sharing}}
