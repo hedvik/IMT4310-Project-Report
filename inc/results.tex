@@ -16,7 +16,7 @@ The majority of assets used in Conductor Hero were created by us with a few exce
 \end{itemize}
 
 \subsection{Core Game Components}
-The four core components that make up the game are: ''GameManager'', ''Metronome'', ''AudioManager'', and ''MotionTracker''.
+The four core components that make up the game are: GameManager, Metronome, AudioManager, and MotionTracker.
 
 The GameManager component manages musical cues as well as scoring. The Metronome component handles the core beat logic. It allows outside components to ask how close they are to being on beat. Other components can also add callbacks to the metronome which will be called every beat. The default sound for the metronome was removed, partly due to uncertainties regarding licensing. The AudioManager manages simultaneous playback of the multiple instrument tracks, metadata about song length and supports muting and unmuting individual tracks. 
 
@@ -36,7 +36,7 @@ The game starts a countdown to the song which ends with the first cue.
 \item The game ends when the song is finished.
 \end{itemize}
 
-\subsection{Shortcomings with prototype}
+\subsection{Shortcomings of the Prototype}
 In the prototype, the game will start the countdown to the song and show the pattern to the player, but currently, it will also start counting score for movement even if the song has not properly started yet. This is unintended as we would like to start measuring score after the first cue, but we did not have the time to fix this by the end of the project. The game is also supposed to end once the song duration has expired, but we do not have any additional end states to signify this due to time constraints.  
 
 \subsection{Playtesting}

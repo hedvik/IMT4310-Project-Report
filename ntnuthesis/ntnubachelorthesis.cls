@@ -399,7 +399,7 @@ Use $\backslash$useyear\{<year>\} to set year.
 	\newcommand\nmt@DepartmentNameText{}
 	\newcommand\nmt@IDI{
 
-		\NTNU, 
+		\NTNU 
 		}
 	\newcommand\nmt@IIK{
 			Department of Information Security and Communication Technology\\

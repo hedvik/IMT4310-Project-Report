@@ -10,12 +10,12 @@ Requiring the player to cue in different instruments throughout a song, un-mutin
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=1.0\textwidth]{images/cue}
-    \caption[Screenshot of a Cue]{This screenshot shows a Cue that is ready to be hit by the player to signify that a instrument track should start playing.}
+    \caption[Screenshot of a Cue]{This screenshot shows a Cue that is ready to be hit by the player to signify that an instrument track should start playing.}
     \label{fig:cue}
 \end{figure}
 
 The musical cues were implemented as a finite state machine as seen in Figure~\ref{fig:cue_fsm}. The cue transitions between different states are based on the number of beats left before the instrument should enter and whether or not it has been hit by the player. Implementing the cues as a finite state machine allowed us to structure the code in a way that was consistent with the state transitions of the cue, making it easy to follow the logical execution of the cue behavior. 
-An alternative solution could be to go with a full state pattern\cite{game_programming_patterns}, with separate classes for each state. However, we did not deem the cue logic to be complex enough to justify such a solution. An example of how a cue looks like can be seen in Figure~\ref{fig:cue}.
+An alternative solution could be to go with a full state pattern\cite{game_programming_patterns}, with separate classes for each state. However, we did not deem the cue logic to be complex enough to justify such a solution. An example of a cue can be seen in Figure~\ref{fig:cue}.
 
 \begin{figure}[tbph]
     \centering
@@ -27,7 +27,7 @@ An alternative solution could be to go with a full state pattern\cite{game_progr
 \subsection{Creating an illusion of glowing light for objects without light sources}
 In terms of the in-game environment, the original plan was to include bright glowing mushrooms scattered around the area. A problem arose when the number of illuminated mushrooms in the scene exceeded a manageable amount, severely reducing the performance of the application. We wanted to keep the visual integrity of the scene as close as possible to its original Blender model, so we came up a workaround for the problem.
 
-We worked around the issue by instead of illuminating the mushrooms, we brightly coloured their material. We then added a bloom post-processing effect, creating an illusion of glowing light around the mushrooms. This did not light up the scene in any way, but the small size of the mushrooms and the sheer amount of them made this the most logical solution to keep the visuals intact without sacrificing performance. 
+Instead of illuminating the mushrooms, we worked around the issue by changing their material to a bright colour. We then added a bloom post-processing effect, creating an illusion of glowing light around the mushrooms. This did not light up the scene in any way, but the small size of the mushrooms and the sheer amount of them made this the most logical solution to keep the visuals intact without sacrificing performance. 
 
 \subsection{Creating simple fog effects using Unity's particle system}
 \begin{figure}[tbph]
@@ -38,7 +38,7 @@ We worked around the issue by instead of illuminating the mushrooms, we brightly
 \end{figure}
 The original concept idea for the in-game environment also included some green fog that was spread around in the scene. Ideally, this could be handled through the use of Volumetric Fog or similar implementations, but due to limited time to work on the project, we had to find a quicker and simpler solution to implement while still providing a relatively good approximation of the fog effect. 
 
-We implemented fog using Unity's Particle System component, utilizing a single fog texture from the Unity particle effects standard assets pack. We then layered several particle systems on top of each other with small variations in settings like particle size, rotation, lifetime, and, emission rate to create the illusion of fog. We combined this with Unity’s distance fog functionality which makes geometry fade towards a gradient colour based on distance from the camera. This enhances the illusion of fog. The end result does not look equivalent to Volumetric Fog, but we believe it to serve its purpose, and saved us a good amount of development resources. A screenshot illustrating the visuals of the fog can be seen in Figure~\ref{fig:fog}. 
+We implemented fog using Unity's Particle System component, utilizing a single fog texture from the Unity particle effects standard assets pack. We then layered several particle systems on top of each other with small variations in settings like particle size, rotation, lifetime, and, emission rate to create the illusion of fog. We combined this with Unity’s distance fog functionality which makes geometry fade towards a gradient colour based on distance from the camera. This enhances the illusion of fog. The end result does not look equivalent to Volumetric Fog, but we believe it serves its purpose, and saved us a good amount of development resources. A screenshot illustrating the visuals of the fog can be seen in Figure~\ref{fig:fog}. 
 
 
 \subsection{Demonstrating the conducting pattern visually}
